@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Página Web Rosa Dinámica</title>
+    <style>
+        /* Fondo rosa y estilo general */
+        body {
+            background-color: #FFC0CB; 
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Estilo para el menú desplegable */
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #FF69B4;
+            background-color: white;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        /* Contenedor de las secciones */
+        .seccion {
+            background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none; /* Por defecto todas las secciones están ocultas */
+        }
+
+        /* Esta clase muestra la sección activa */
+        .activa {
+            display: block;
+        }
+
+        /* Estilos de decoración y botones */
+        h1, h2 {
+            color: #D11149;
+        }
+        .boton {
+            background-color: #FF69B4;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .boton:hover {
+            background-color: #FF1493;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mi Sitio Web Interactivo</h1>
+    <p>Usa el menú de abajo para navegar entre las diferentes secciones:</p>
+
+    <!-- Menú desplegable en cascada -->
+    <select id="menuNavegacion" onchange="cambiarSeccion()">
+        <option value="inicio">🏠 Sección de Inicio</option>
+        <option value="servicios">💼 Nuestros Servicios</option>
+        <option value="contacto">✉️ Información de Contacto</option>
+    </select>
+
+    <!-- SECCIÓN 1: INICIO -->
+    <div id="seccion-inicio" class="seccion activa">
+        <h2>Bienvenido a la Página de Inicio</h2>
+        <p>Esta es la sección principal de nuestro sitio web con fondo rosa. Aquí puedes poner una introducción sobre ti, tus gustos o el propósito de tu proyecto escolar o personal.</p>
+        <p><strong>Dato curioso:</strong> El diseño de páginas dinámicas como esta utiliza pequeñas instrucciones para cambiar lo que ves en pantalla sin tener que cargar otra página diferente.</p>
+    </div>
+
+    <!-- SECCIÓN 2: SERVICIOS -->
+    <div id="seccion-servicios" class="seccion">
+        <h2>Nuestros Servicios Disponibles</h2>
+        <p>Aquí tienes una lista detallada de lo que ofrecemos en esta plataforma simulada:</p>
+        <ul>
+            <li><strong>Diseño Web Básico:</strong> Creación de estructuras en HTML.</li>
+            <li><strong>Estilos Personalizados:</strong> Fondos de colores, fuentes modernas y bordes redondeados.</li>
+            <li><strong>Interactividad Dinámica:</strong> Menús que reaccionan de inmediato a tus clics.</li>
+        </ul>
+        <button class="boton" onclick="alert('¡Gracias por interesarte en nuestros servicios!')">Saber más</button>
+    </div>
+
+    <!-- SECCIÓN 3: CONTACTO -->
+    <div id="seccion-contacto" class="seccion">
+        <h2>Ponte en Contacto</h2>
+        <p>Si tienes dudas, comentarios o quieres expandir esta página, puedes escribirnos artificialmente mediante este formulario simulado:</p>
+        
+        <label for="nombreUsuario">Tu nombre:</label><br>
+        <input type="text" id="nombreUsuario" placeholder="Escribe aquí..." style="padding: 5px; width: 90%; margin-top: 5px;"><br><br>
+        
+        <button class="boton" onclick="enviarMensaje()">Enviar Mensaje</button>
+    </div>
+
+    <!-- Código que hace la magia del cambio de menú -->
+    <script>
+        function cambiarSeccion() {
+            // 1. Obtener la opción seleccionada en el menú
+            var seleccion = document.getElementById("menuNavegacion").value;
+            
+            // 2. Ocultar todas las secciones primero
+            var secciones = document.getElementsByClassName("seccion");
+            for (var i = 0; i < secciones.length; i++) {
+                secciones[i].classList.remove("activa");
+            }
+            
+            // 3. Mostrar únicamente la sección elegida
+            document.getElementById("seccion-" + seleccion).classList.add("activa");
+        }
+
+        function enviarMensaje() {
+            var nombre = document.getElementById("nombreUsuario").value;
+            if(nombre === "") {
+                alert("Por favor, escribe tu nombre primero.");
+            } else {
+                alert("¡Gracias " + nombre + "! Tu mensaje simulado ha sido enviado con éxito.");
+            }
+        }
+    </script>
+
+</body>
+</html>
